@@ -15,7 +15,7 @@ Prerequisites
 This repository depends on the pandas and numpy libraries. If you do not have 
 them already installed. Run the following:
 
-..highlight:: shell
+.. highlight:: shell
 
     pip install numpy
     pip install pandas
@@ -23,7 +23,7 @@ them already installed. Run the following:
 
 Or with virtualenv:
 
-..highlight:: shell
+.. highlight:: shell
 
     virtualenv anagramEnv
     source anagramEnv/bin/activate
@@ -36,7 +36,7 @@ Installing
 
 Clone the repository from github with the following:
 
-..highlight:: shell
+.. highlight:: shell
 
     git clone https://github.com/npcasler/anagram.git
 
@@ -52,20 +52,21 @@ letters and at least as many permutations as its characters.
 
 For the default test run:
 
-..highlight:: shell
+.. highlight:: shell
 
     anagram
 
 
-TO use this application on a different dictionary or to change the output file
+To use this application on a different dictionary or to change the output file
 path run the following
 
-..highlight:: shell
+.. highlight:: shell
 
     anagram -i {input_dict} -c {count} -o {output_csv}
 
 
-Where
+Parameters
+~~~~~~~~~~
 
 - *input\_dict* - Path to input dictionary file
 - *count* - Minimum letter count needed for a word to be included
