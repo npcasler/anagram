@@ -75,25 +75,25 @@ Parameters
 Dependencies
 ~~~~~~~~~~~~
 
-- `Pandas <https://pandas.pydata.org>_` - Data Frame Manipulation and Querying
-- `Numpy <https://numpy.org>_` - Numerical Library
+- `Pandas <https://pandas.pydata.org>`_ - Data Frame Manipulation and Querying
+- `Numpy <https://numpy.org>`_ - Numerical Library
 
 Datasets
 ~~~~~~~~
 
-- `afrikaans <https://download.openwall.net/pub/wordlists/languages/Afrikaans/lower.gz>_` : Sample dictionary file of Afrikaans words 
-- `american-english <https://packages.ubuntu.com/trusty/wordlist/wamerican>_` : Sample English dictionary
-- `british-english <https://packages.ubuntu.com/trusty/wordlist/wbritish>_` : Sample British English dictionary
-- `czech <https://download.openwall.net/pub/wordlists/languages/Czech/lower.gz>_` : Sample Czech dictionary 
-- `danish <https://download.openwall.net/pub/wordlists/languages/Danish/2-large/lower.gz>_`           : Sample Danish dictionary
-- `finnish <https://download.openwall.net/pub/wordlists/languages/Finnish/lower.gz>_` : Sample Finnish dictionary
-- `german <https://download.openwall.net/pub/wordlists/languages/German/2-large/cap.gz>_`: Sample German dictionary
-- `mixed <https://download.openwall.net/pub/wordlists/languages/English/4-extra/mixed.gz>_` : Mixed case English dictionary
+- `afrikaans <https://download.openwall.net/pub/wordlists/languages/Afrikaans/lower.gz>`_ : Sample dictionary file of Afrikaans words 
+- `american-english <https://packages.ubuntu.com/trusty/wordlist/wamerican>`_ : Sample English dictionary
+- `british-english <https://packages.ubuntu.com/trusty/wordlist/wbritish>`_ : Sample British English dictionary
+- `czech <https://download.openwall.net/pub/wordlists/languages/Czech/lower.gz>`_ : Sample Czech dictionary 
+- `danish <https://download.openwall.net/pub/wordlists/languages/Danish/2-large/lower.gz>`_           : Sample Danish dictionary
+- `finnish <https://download.openwall.net/pub/wordlists/languages/Finnish/lower.gz>`_ : Sample Finnish dictionary
+- `german <https://download.openwall.net/pub/wordlists/languages/German/2-large/cap.gz>`_: Sample German dictionary
+- `mixed <https://download.openwall.net/pub/wordlists/languages/English/4-extra/mixed.gz>`_ : Mixed case English dictionary
 
 Authors
 -------
 
-- **Nathan Casler** - `Initial Commits <https://github.com/npcasler>_`
+- **Nathan Casler** - `Initial Commits <https://github.com/npcasler>`_
 
 
 
