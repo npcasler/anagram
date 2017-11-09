@@ -40,8 +40,15 @@ Clone the repository from github with the following:
 
     git clone https://github.com/npcasler/anagram.git
 
-    python setup.py install
+    cd anagram
 
+    make install
+
+Or use python setup script:
+
+.. code-block:: shell
+
+    python setup.py install
 
 Running Test
 ~~~~~~~~~~~~
