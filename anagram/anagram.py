@@ -1,68 +1,103 @@
-###############################################################################
-#  AnagramMatcher
+#!/usr/bin/env python
 #
-# Utility class to extract all anagrams from a given dictionary file
-#
-# Output is a comma separated list of anagrams where the word is over 4 letters
-# long and as many or more anagrams were found than the number of letters in
-# the origin words
-#
-# @param dict Path to dictionary file
-# @param nLetters Number of letters needed to qualify for matching
-# @param output Path to output file
-#
-###############################################################################
-import csv
-import pandas as pd
+# Anagram
+# License: MIT
+
+from __future__ import print_function
+
+from .matcher import AnagramMatcher
+import argparse
+import textwrap
+import os
+
+DESCRIPTION = """Anagram is a command-line utility that groups available permutations
+of words in a dictionary into a comma-separated value file
+
+Usage:
+    anagram [-i --input] [-n -num-letters] [-o --output] [-h]
+
+"""
 
 
-class AnagramMatcher():
-    dictionary = ''
+def args_options():
+    """ Generate an argument parser.
+
+    :returns:
+        Parser object
+    """
+
+    parser = argparse.ArgumentParser(prog='anagram',
+                                     formatter_class=argparse
+                                     .RawDescriptionHelpFormatter,
+                                     description=textwrap.dedent(DESCRIPTION))
+
+    parser.add_argument('-i', '--input', type=str,
+                        default='./tests/samples/american-english',
+                        help="Path to input dictionary")
+
+    parser.add_argument('-c', '--count', type=int, default=4,
+                        help="Number of letters needed for word to be parsed")
+
+    parser.add_argument('-o', '--output', type=str,
+                        default='anagrams.csv', help="Path to output csv")
+
+    return parser
+
+
+def main(args):
+    """
+    Main function - launches the program
+
+    :param args:
+        The parser arguments
+    :type args:
+        Parser object
+
+    :returns:
+        Number of lines written
+    """
+    input_dict = ''
+    output_csv = ''
     count = 0
-    output = ''
+    if args:
+        if args.input:
+            input_dict = args.input
+            # Check for bad paths
+            if not os.path.exists(input_dict):
+                raise IOError("Input dictionary doesn't exist")
+            if os.stat(input_dict).st_size == 0:
+                return "Input dataset is empty"
 
-    # Initialize basic dataset values
-    def __init__(self, dictionary, count, output):
-        self.dictionary = dictionary
-        self.count = count
-        self.output = output
+        if args.output:
+            output_csv = args.output
 
-    # Read the dictionary file into memory for faster access
-    def read_dict(self):
-        # Create a list to hold the dictionaries
-        words = []
-        with open(self.dictionary) as f:
-            # Pre-process the dictioanry file
-            for line in f:
-                # If the words has enough letters, clean and generate key
-                if len(line.strip()) >= self.count:
-                    # Remove white space and force lower-case
-                    word = line.strip().lower()
-                    # Sort letters alphabetically for key
-                    key = "".join(sorted(word))
-                    # Basic key/value format for Pandas processing
-                    words.append({'key': key, 'word': word})
-        # Create pandas data frame for fase aggregation
-        word_list = pd.DataFrame(words)
-        return word_list
+        if args.count:
+            count = args.count
+            if count < 0:
+                raise ValueError('Character count must be positive')
 
-    def build_list(self, word_list):
-        # Get frequency list for keys
-        freq = word_list.groupby('key').agg('count')
-        # Filter out only keys with greater or equal frequency to length
-        key_list = freq.loc[freq['word'] >= freq.index.str.len()]
-        return key_list
+        # Instantiate the AnagramMatcher class
+        anagram = AnagramMatcher(input_dict, count, output_csv)
+        # Create key/value store of words
+        word_list = anagram.read_dict()
+        # Filter keys with requirement that they perm count >= letter count
+        key_list = anagram.build_list(word_list)
+        # Write the new list to a headerless csv
+        rows = anagram.write_csv(key_list, word_list)
+        print("Successfully wrote {} anagrams to {}".format(rows, output_csv))
+    return len(key_list)
 
-    def write_csv(self, key_list, word_list):
-        # Write out data
-        out_data = []
-        # Match filtered indexes to words
-        for i in key_list.index:
-            subset = word_list[word_list['key'] == i]
-            # Add to aggregate list
-            out_data.append(subset['word'].tolist())
-        # Dump list to headerless CSV
-        with open(self.output, 'w') as f:
-            writer = csv.writer(f)
-            writer.writerows(out_data)
-        return 0
+
+def __main__():
+
+    global parser
+    parser = args_options()
+    args = parser.parse_args()
+    main(args)
+
+
+if __name__ == '__main__':
+    try:
+        __main__()
+    except IOError as err:
+        exit(str(err))

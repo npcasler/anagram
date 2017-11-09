@@ -1,0 +1,8 @@
+#!/usr/bin/env python
+# Anagram Matcher
+# License: MIT
+
+import anagram.anagram
+
+if __name__ == '__main__':
+	anagram.anagram.__main__()

@@ -1,0 +1,99 @@
+=======
+Anagram
+=======
+------------------------
+A permutation aggregator
+------------------------
+
+
+Getting Started
+---------------
+
+Prerequisites
+~~~~~~~~~~~~~
+
+This repository depends on the pandas and numpy libraries. If you do not have 
+them already installed. Run the following:
+
+..highlight:: shell
+
+    pip install numpy
+    pip install pandas
+
+
+Or with virtualenv:
+
+..highlight:: shell
+
+    virtualenv anagramEnv
+    source anagramEnv/bin/activate
+
+    pip install -r requirements.txt
+
+
+Installing
+~~~~~~~~~~
+
+Clone the repository from github with the following:
+
+..highlight:: shell
+
+    git clone https://github.com/npcasler/anagram.git
+
+    python setup.py install
+
+
+Running Test
+~~~~~~~~~~~~
+
+AnagramTest - This test will aggregate the example *american-english* dictionary
+and generate a CSV with the anagram permutations for words with 4 or more
+letters and at least as many permutations as its characters.
+
+For the default test run:
+
+..highlight:: shell
+
+    anagram
+
+
+TO use this application on a different dictionary or to change the output file
+path run the following
+
+..highlight:: shell
+
+    anagram -i {input_dict} -c {count} -o {output_csv}
+
+
+Where
+
+- *input\_dict* - Path to input dictionary file
+- *count* - Minimum letter count needed for a word to be included
+- *output\_csv* - Path for output CSV 
+
+Dependencies
+~~~~~~~~~~~~
+
+- `Pandas <https://pandas.pydata.org>_` - Data Frame Manipulation and Querying
+- `Numpy <https://numpy.org>_` - Numerical Library
+
+Datasets
+~~~~~~~~
+
+- `afrikaans <https://download.openwall.net/pub/wordlists/languages/Afrikaans/lower.gz>_` : Sample dictionary file of Afrikaans words 
+- `american-english <https://packages.ubuntu.com/trusty/wordlist/wamerican>_` : Sample English dictionary
+- `british-english <https://packages.ubuntu.com/trusty/wordlist/wbritish>_` : Sample British English dictionary
+- `czech <https://download.openwall.net/pub/wordlists/languages/Czech/lower.gz>_` : Sample Czech dictionary 
+- `danish <https://download.openwall.net/pub/wordlists/languages/Danish/2-large/lower.gz>_`           : Sample Danish dictionary
+- `finnish <https://download.openwall.net/pub/wordlists/languages/Finnish/lower.gz>_` : Sample Finnish dictionary
+- `german <https://download.openwall.net/pub/wordlists/languages/German/2-large/cap.gz>_`: Sample German dictionary
+- `mixed <https://download.openwall.net/pub/wordlists/languages/English/4-extra/mixed.gz>_` : Mixed case English dictionary
+
+Authors
+-------
+
+- **Nathan Casler** - `Initial Commits <https://github.com/npcasler>_`
+
+
+
+
